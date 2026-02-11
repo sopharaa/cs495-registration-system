@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+    <h2 class="text-2xl font-semibold text-center text-gray-800">
+      Create Account
+    </h2>
+    <p class="text-center text-sm text-gray-500 mt-1">
+      Register to continue
+    </p>
+
+    {{if .Error}}
+    <div class="mt-4 rounded-lg bg-red-100 text-red-700 px-4 py-2 text-sm">
+      {{.Error}}
+    </div>
+    {{end}}
+
+    {{if .Success}}
+    <div class="mt-4 rounded-lg bg-green-100 text-green-700 px-4 py-2 text-sm">
+      {{.Success}}
+    </div>
+    {{end}}
+
+    <form method="POST" class="mt-6 space-y-4">
+
+      <div>
+        <label class="text-sm font-medium text-gray-700">Username</label>
+        <input
+          name="username"
+          type="text"
+          required
+          placeholder="yourname"
+          class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-red-500 outline-none"
+        />
+      </div>
+
+      <div>
+        <label class="text-sm font-medium text-gray-700">Email</label>
+        <input
+          name="email"
+          type="email"
+          required
+          placeholder="user@email.com"
+          class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-red-500 outline-none"
+        />
+      </div>
+
+      <div>
+  <label class="text-sm font-medium text-gray-700">Password</label>
+  <div class="relative mt-1">
+    <input
+      id="password"
+      name="password"
+      type="password"
+      required
+      class="w-full rounded-lg border border-gray-300 px-4 py-2 pr-14 focus:ring-2 focus:ring-blue-500 outline-none"
+    />
+    <button
+      type="button"
+      onclick="togglePassword('password', this)"
+      class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-600"
+    >
+      Show
+    </button>
+  </div>
+</div>
+
+      <div>
+  <label class="text-sm font-medium text-gray-700">Confirm Password</label>
+  <div class="relative mt-1">
+    <input
+      id="confirm_password"
+      name="confirm_password"
+      type="password"
+      required
+      class="w-full rounded-lg border border-gray-300 px-4 py-2 pr-14 focus:ring-2 focus:ring-blue-500 outline-none"
+    />
+    <button
+      type="button"
+      onclick="togglePassword('confirm_password', this)"
+      class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-600"
+    >
+      Show
+    </button>
+  </div>
+</div>
+
+      <button
+        type="submit"
+        class="w-full rounded-lg bg-blue-600 py-2 text-white font-semibold hover:bg-blue-500 transition"
+      >
+        Register
+      </button>
+
+    </form>
+  </div>
+<script>
+  function togglePassword(fieldId, btn) {
+    const input = document.getElementById(fieldId);
+    if (input.type === "password") {
+      input.type = "text";
+      btn.textContent = "Hide";
+    } else {
+      input.type = "password";
+      btn.textContent = "Show";
+    }
+  }
+</script>
+</body>
+</html>
